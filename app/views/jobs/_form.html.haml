@@ -1,0 +1,11 @@
+=simple_form_for(@job, html:{class: 'from-horizontal form-groups-bordered'}) do |f|
+	=f.input :title ,label: "Job Title" ,:input_html => {:style => 'width: 250px'}
+	%br/
+	=f.input :description ,label: "Job Description" , :input_html => {:style => 'width: 250px'}
+	%br/
+	=f.input :company ,label: "Your Company" , :input_html => {:style => 'width: 250px'}
+	%br/	
+	=f.input :url ,label: "Link to Job" ,:input_html => {:style => 'width: 250px'}
+	%br/
+	=f.button :submit
+
