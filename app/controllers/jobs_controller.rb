@@ -1,14 +1,14 @@
 class JobsController < ApplicationController
-
+  before_action :find_jobs,only: [:show,:edit,:update,:destroy]
 	def index
 	
-    	@job=Job.all
+    	@jobs=Job.all.order("created_at DESC")
 
 	end
 	
 
 	def show
-
+    	
 	end
 	
 
@@ -26,12 +26,21 @@ class JobsController < ApplicationController
 	end
 	
 	def update
+	  if	@job.update(jobs_params)
+    
+    		redirect_to @job
+    	else
+    		render "Edit"
+    	end
+
 	end
 	
 	def edit
 	end
 
 	def destroy
+		@job.destroy
+		redirect_to root_path
 	end
 	
 	private
@@ -41,6 +50,6 @@ class JobsController < ApplicationController
 	end
 
 	def find_jobs
-		@job-job.find(params[:id])
+		@job=Job.find(params[:id])
 	end
 end
